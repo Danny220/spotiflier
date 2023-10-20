@@ -29,7 +29,6 @@ export class UserCardComponent implements OnInit, OnDestroy{
 
     if (this.isFullScreen) {
       this.user = this.authService.user;
-      this.authService.authChange.subscribe(data => console.log('data: ' + data));
     }
   }
 

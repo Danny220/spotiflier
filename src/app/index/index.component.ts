@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../User';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
@@ -15,17 +15,23 @@ export class IndexComponent implements OnInit {
 
   title = 'Spotiflier';
 
+  isLoggedOut = !localStorage.getItem('access_token') || localStorage.getItem('access_token') == '';
+
   constructor(
     private router: Router, 
     private authService: AuthService,
     private route: ActivatedRoute
   ) {}
+
   async ngOnInit() {
     const isLogin = this.route.snapshot.params['loginSuccess'];
     if (isLogin) {
-      this.authService.getProfile();
+      await this.authService.getProfile();
     }
-    this.authService.authChange.subscribe(data => this.user = data);
+
+    this.isLoggedOut = !localStorage.getItem('access_token') || localStorage.getItem('access_token') == '';
+
+    this.user = this.authService.user;
   }
 
   login() {

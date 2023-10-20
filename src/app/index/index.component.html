@@ -9,7 +9,7 @@
         (goFullScreenReq)="goFullScreen()"  
       >
       </app-user-card>
-      <p *ngIf="!localStorage.getItem['access_token'] || localStorage.getItem['access_token'] == ''">
+      <p *ngIf="isLoggedOut">
         LOGGED OUT
       </p>
     </div>

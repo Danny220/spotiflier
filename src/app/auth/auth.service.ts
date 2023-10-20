@@ -80,8 +80,8 @@ export class AuthService {
     }
 
     logout() {
+        this.user = undefined;
         localStorage.clear();
         this.router.navigate(['..']);
-        this.authChange.next(undefined);
     }
 }
