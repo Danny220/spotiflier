@@ -1,0 +1,19 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <app-user-card 
+        [user]="user"
+        (loginReq)="login()" 
+        (logoutReq)="logout()"
+        (goFullScreenReq)="goFullScreen()"  
+      >
+      </app-user-card>
+      <p *ngIf="!localStorage.getItem['access_token'] || localStorage.getItem['access_token'] == ''">
+        LOGGED OUT
+      </p>
+    </div>
+    <div class="col-sm-8">
+    </div>
+  </div>
+</div>

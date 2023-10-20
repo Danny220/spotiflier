@@ -1,0 +1,7 @@
+.container {
+    margin-top: 2%
+}
+
+.searchBox > mat-form-field {
+    width: 100%;
+}
